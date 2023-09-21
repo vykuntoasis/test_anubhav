@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri=".21/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZAPR_C_HRS_UTIL_TAN_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="ZAPR_C_HRS_UTIL_TANType" sap:label="Effort utilization consumption" sap:semantics="aggregate" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:filterable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="TotaledProperties" Type="Edm.String" sap:aggregation-role="totaled-properties-list" sap:is-annotation="true" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:aggregation-role="dimension" sap:label="Cost Center" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="empid" Type="Edm.String" MaxLength="8" sap:aggregation-role="dimension" sap:text="empid_T" sap:label="Personnel Number" sap:creatable="false" sap:updatable="false" sap:value-list="standard"/>
+                <Property Name="empid_NodeID" Type="Edm.String" MaxLength="65" sap:hierarchy-node-for="empid" sap:text="empid_NodeText" sap:label="Personnel Number Node ID" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="empid_NodeIDExt" Type="Edm.String" MaxLength="60" sap:hierarchy-node-external-key-for="empid_NodeID" sap:text="empid_NodeText" sap:label="Personnel Number Node ID External" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="empid_NodeText" Type="Edm.String" MaxLength="60" sap:label="Personnel Number Node Text" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="empid_ParentID" Type="Edm.String" MaxLength="60" sap:hierarchy-parent-node-for="empid_NodeID" sap:label="Personnel Number Parent ID" sap:sortable="false"/>
+                <Property Name="empid_Level" Type="Edm.Int16" sap:hierarchy-level-for="empid_NodeID" sap:label="Personnel Number Level" sap:sortable="false"/>
+                <Property Name="empid_Drillstate" Type="Edm.String" MaxLength="9" sap:hierarchy-drill-state-for="empid_NodeID" sap:is-annotation="true" sap:label="Personnel Number Drilldown State" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="empid_Nodecount" Type="Edm.Int16" sap:hierarchy-node-descendant-count-for="empid_NodeID" sap:is-annotation="true" sap:label="Personnel Number Counter for Descendant Nodes" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="empid_PreorderRank" Type="Edm.Int32" sap:hierarchy-preorder-rank-for="empid_NodeID" sap:is-annotation="true" sap:label="Personnel Number Preorder Rank" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="empid_T" Type="Edm.String" MaxLength="1333" sap:label="Personnel Number (Description)" sap:quickinfo="Personnel Number" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Planned" Type="Edm.Decimal" Precision="42" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:text="Planned_F" sap:updatable="false" sap:label="Planned efforts" sap:creatable="false"/>
+                <Property Name="Planned_F" Type="Edm.String" MaxLength="60" sap:label="Planned efforts (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="Recorded" Type="Edm.Decimal" Precision="42" Scale="0" sap:aggregation-role="measure" sap:filterable="false" sap:text="Recorded_F" sap:updatable="false" sap:label="Recorded efforts" sap:creatable="false"/>
+                <Property Name="Recorded_F" Type="Edm.String" MaxLength="60" sap:label="Recorded efforts (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="EffortUtilization" Type="Edm.Decimal" Precision="42" Scale="7" sap:aggregation-role="measure" sap:filterable="false" sap:text="EffortUtilization_F" sap:updatable="false" sap:label="Effortutilization" sap:creatable="false"/>
+                <Property Name="EffortUtilization_F" Type="Edm.String" MaxLength="60" sap:label="Effortutilization (Formatted)" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="empid" sap:label="Personnel Number (Master Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="empid_ID"/>
+                </Key>
+                <Property Name="empid_ID" Type="Edm.String" Nullable="false" MaxLength="8" sap:text="empidText" sap:label="Personnel Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="empidText" Type="Edm.String" sap:label="Personnel Number (Description)" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="empidResult" sap:label="Personnel Number (Booked Data)" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="empid"/>
+                </Key>
+                <Property Name="empid" Type="Edm.String" Nullable="false" MaxLength="8" sap:text="empidText" sap:label="Personnel Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="empidText" Type="Edm.String" sap:label="Personnel Number (Description)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="CostCenter" Type="Edm.String" MaxLength="10" sap:label="Cost Center" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="ODataQueryAdditionalMetadata" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ODataQueryMetadata"/>
+                </Key>
+                <Property Name="ODataQueryMetadata" Type="Edm.String" Nullable="false" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValue_Current" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="ODataQueryMetadataValueAtDefine" Type="Edm.String" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityContainer Name="ZAPR_C_HRS_UTIL_TAN_CDS_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZAPR_C_HRS_UTIL_TAN" EntityType="ZAPR_C_HRS_UTIL_TAN_CDS.ZAPR_C_HRS_UTIL_TANType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="empid" EntityType="ZAPR_C_HRS_UTIL_TAN_CDS.empid" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="empidResults" EntityType="ZAPR_C_HRS_UTIL_TAN_CDS.empidResult" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="AdditionalMetadata" EntityType="ZAPR_C_HRS_UTIL_TAN_CDS.ODataQueryAdditionalMetadata" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="ZAPR_C_HRS_UTIL_TAN_CDS.ZAPR_C_HRS_UTIL_TANType/empid" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Personnel Number ( Master Data )"/>
+                        <PropertyValue Property="CollectionPath" String="empid"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="empid"/>
+                                    <PropertyValue Property="ValueListProperty" String="empid_ID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="empidText"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://122.162.240.164:8021/sap/opu/odata/sap/ZAPR_C_HRS_UTIL_TAN_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://122.162.240.164:8021/sap/opu/odata/sap/ZAPR_C_HRS_UTIL_TAN_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" xmlns:core="sap.ui.core">
+<smartfilterbar:ControlConfiguration groupId="_BASIC" 
+    key="idDescription"
+    label="Description"
+    visibleInAdvancedArea="true">
+    <smartfilterbar:customControl>
+        <ComboBox id="idDescription" items="{/Travel}">
+        <core:Item key="{Description}" text="{Description}"/>
+        
+    </ComboBox>
+    </smartfilterbar:customControl>
+</smartfilterbar:ControlConfiguration>
+<smartfilterbar:ControlConfiguration groupId="_BASIC" 
+    key="idCheck"
+    label="Check box"
+    visibleInAdvancedArea="true">
+    <smartfilterbar:customControl>
+        <CheckBox text="Select"></CheckBox>
+    </smartfilterbar:customControl>
+</smartfilterbar:ControlConfiguration>
+</core:FragmentDefinition>

@@ -1,0 +1,100 @@
+<mvc:View xmlns:table="sap.ui.table" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName = "ibm.fin.ar.controller.Main"
+xmlns:form="sap.ui.layout.form"  xmlns:t="sap.ui.table">
+
+<t:Table  id="idTable" selectionMode="Single" visibleRowCount="5" rowSelectionChange="onRowChange">
+<!--  -->
+<t:toolbar>
+<Toolbar >
+<Button icon="sap-icon://delete" press="onDeleteRow"></Button>
+</Toolbar>
+</t:toolbar>
+
+<t:columns>
+ <t:Column label="{i18n>XBUT_EMPID}">
+  <t:template>
+  <Text text="{empId}"></Text>
+  </t:template>
+ </t:Column>
+ <t:Column label="Emp Name" >
+  <t:template>
+  <Input value="{ path : 'empName' }"></Input>
+  <!-- , formatter :'.formatter.changeNametoUC' -->
+  </t:template>
+ </t:Column>
+ <t:Column label="Salary">
+ <t:template>
+  <Text text=" { parts: [{ path:'salary'},{path :'currency'} ] ,
+                 formatter:'.formatter.formatCurrency'  }"></Text>
+  </t:template>
+ </t:Column>
+ <t:Column label="smoker">
+ <t:template>
+  <CheckBox selected="{smoker}"  ></CheckBox>
+  </t:template>
+ </t:Column>
+ <t:Column label="Gender">
+ <t:template>
+  <Image src="{gender}" width="80px" height="40px"></Image>
+  </t:template>
+ </t:Column>
+ <t:Column label="msTATUS">
+ <t:template>
+  <Select selectedKey="{mStat}">
+  <items>
+    <core:Item key="M" text="Married" ></core:Item>
+    <core:Item key="S" text="Single" ></core:Item>
+  </items>
+  </Select>
+       
+  </t:template>
+
+ </t:Column>
+
+  <t:Column label="Rating">
+ <t:template>
+ 
+  <RatingIndicator value="{rating}"></RatingIndicator>
+  </t:template>
+ </t:Column>
+  <t:Column label="employstatus">
+ <t:template> 
+  <ObjectStatus text="{ path:'eStat', formatter : '.formatter.getStat' }"
+   state="{ path:'eStat', formatter : '.formatter.getStatcolor' }" ></ObjectStatus>
+  </t:template>
+ </t:Column>
+
+
+ 
+
+</t:columns>
+
+
+
+</t:Table>
+<form:SimpleForm editable="true" id="idSimpleform">
+
+<form:title>
+  <core:Title text="Employee details"></core:Title>
+</form:title>
+
+<form:content>
+<Label text="Empid"  ></Label>
+<Input value="{empId}" id="idEmpid" enabled="{iron>/empStr/sherlock}"></Input>
+
+<Label text="Empname" ></Label>
+<Input value="{ path:'empName' }"  id="idEmpname" enabled="{iron>/empStr/sherlock}" ></Input>
+
+<Label text="Salary" ></Label>
+<Input id="idSalary" enabled="{/empStr/sherlock}" value="{= ${empName} === 'Anubhav' ? 5000 : ${salary} }">
+</Input>
+
+<Label text="Currency" ></Label>
+<Input id="idCurr" enabled="{iron>/empStr/sherlock}" value="{currency}"></Input>
+
+<Button text="Click Me" press="onMagic" id="idBtn"></Button>
+<Switch change="onChange"></Switch>
+</form:content>
+</form:SimpleForm>
+
+
+</mvc:View>

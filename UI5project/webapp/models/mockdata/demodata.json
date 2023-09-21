@@ -1,0 +1,74 @@
+{
+    "empStr": {
+        "empId": 100,
+        "empName": "Ananya",
+        "salary": 9500,
+        "currency": "EUR",
+        "sherlock": true
+    },
+    "empTab":[
+        {
+        "empId": 101,
+        "empName": "Ananya",
+        "salary": 9500,
+        "currency": "EUR",
+        "smoker":false,
+        "gender": "https://th.bing.com/th?id=OIP.HYd1vkPEU3RaZY-QfVzbjwHaIP&w=236&h=263&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2",
+        "mStat":"S",
+        "rating": 5,
+        "eStat" : "E"
+       
+        },
+
+        { 
+        "empId": 102,
+        "empName": "Sanya",
+        "salary": 1700,
+        "currency": "AED",
+        "smoker":false,
+        "gender": "https://th.bing.com/th?id=OIP.HYd1vkPEU3RaZY-QfVzbjwHaIP&w=236&h=263&c=8&rs=1&qlt=90&o=6&dpr=1.5&pid=3.1&rm=2",
+        "mStat":"M",
+        "rating": 3 ,
+        "eStat" : "E"
+    },
+        {
+            "empId": 103,
+        "empName": "Tania",
+        "salary": 8800,
+        "currency": "USD",
+        "smoker":true,
+        "gender": "female",
+        "mStat":"S",
+        "rating": 3,
+        "eStat" : "T"
+        },
+        {
+            "empId": 104,
+            "empName": "Srinivas",
+            "salary": 7600,
+            "currency": "USD",
+            "smoker":true,
+            "gender": "male",
+            "mStat":"M",
+            "rating": 4,
+            "eStat" : "E"
+        },
+        {
+        "empId": 105,
+        "empName": "Sonia",
+        "salary": 1700,
+        "currency": "AED",
+        "smoker":false,
+        "gender": "female",
+        "mStat":"M",
+        "rating": 3,
+        "eStat" : "E"
+        }
+       
+    
+        
+    ]
+}
+
+
+

@@ -1,0 +1,73 @@
+.box{
+    width: 180px;
+    float: left;
+    margin: 10px;
+    
+  }
+.box-title {
+    color: brown;
+    text-align: center;
+    
+}
+.box-content {
+    
+    background-color: yellow;
+    color: blue;
+    font-family: cursive;
+    border: 10px solid black;
+    padding: 4px;
+}
+li{
+    float: left;
+    padding: 10px;
+    border: 1px solid maroon;
+    background-color: blueviolet;
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: yellowgreen;
+    font-weight: bold;
+}
+li:hover{
+    background-color: aqua;
+    color: wheat;
+    text-transform: capitalize;
+}
+img{
+   width: 200px;
+   height: 200px;
+   
+}
+.img{
+   float: left;
+   padding: 3px;
+}
+
+th,td{
+    border: 1px solid black;
+    text-align: center;
+}
+table{
+    border-collapse: collapse;
+    padding: 10px;
+}
+th{
+    background-color: brown;
+    color: white;
+}
+tr:nth-child(even){
+   background-color: white;
+}
+tr:nth-child(odd){
+   background-color: aqua;
+}
+input:focus{
+    background-color: black;
+    color: white;
+}
+#fn:focus{
+    background-color: chartreuse;
+    color: white;
+    font-weight: bold;
+}

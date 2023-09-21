@@ -1,0 +1,41 @@
+{
+    "fileName": "id_1687336234541_287_propertyChange",
+    "fileType": "change",
+    "changeType": "propertyChange",
+    "moduleName": "",
+    "reference": "com.anubhavtrainings.idoclrp",
+    "packageName": "",
+    "content": {
+        "property": "width",
+        "newValue": "20rem"
+    },
+    "selector": {
+        "id": "com.anubhavtrainings.idoclrp::sap.suite.ui.generic.template.ListReport.view.ListReport::ZS4H_C_IDOC_LRP_TAN--listReport-Docnum",
+        "idIsLocal": false,
+        "type": "sap.m.Column"
+    },
+    "layer": "CUSTOMER_BASE",
+    "texts": {},
+    "namespace": "apps/com.anubhavtrainings.idoclrp/changes/",
+    "projectId": "",
+    "creation": 1687336234541,
+    "originalLanguage": "",
+    "support": {
+        "generator": "changeUtils: SAPFioriTools",
+        "service": "",
+        "user": "",
+        "sapui5Version": "1.112.1",
+        "sourceChangeFileName": "",
+        "compositeCommand": ""
+    },
+    "oDataInformation": {},
+    "dependentSelector": {},
+    "validAppVersions": {
+        "from": "0.0.1",
+        "to": "0.0.1",
+        "creation": "0.0.1"
+    },
+    "jsOnly": false,
+    "variantReference": "",
+    "appDescriptorChange": false
+}

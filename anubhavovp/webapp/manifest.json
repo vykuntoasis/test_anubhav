@@ -1,0 +1,265 @@
+{
+    "_version": "1.49.0",
+    "sap.app": {
+        "id": "anubhav.ovp.anubhavovp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:ovp",
+            "version": "1.10.5",
+            "toolsId": "2473b391-0493-4cae-85bd-cbe9ba291712"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZVY_SB_BOOKINGANA/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZVY_SB_BOOKINGANA_VAN",
+                        "annotation"
+                    ],
+                    "localUri": "localService/mainService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZVY_SB_BOOKINGANA_VAN": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZVY_SB_BOOKINGANA_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/mainService/ZVY_SB_BOOKINGANA_VAN.xml"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            },
+            "ZVY_SB_TRAVEL_Annotation": {
+                "uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZVY_SB_TRAVEL_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/ZVY_SB_TRAVEL/ZVY_SB_TRAVEL_Annotation.xml"
+                }
+            },
+            "ZVY_SB_TRAVEL": {
+                "uri": "/sap/opu/odata/sap/ZVY_SB_TRAVEL",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "ZVY_SB_TRAVEL_Annotation",
+                        "annotation0"
+                    ],
+                    "localUri": "localService/ZVY_SB_TRAVEL/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "annotation0": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation0.xml",
+                "settings": {
+                    "localUri": "annotations/annotation0.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.118.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ovp": {},
+                "sap.ui.rta": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "anubhav.ovp.anubhavovp.i18n.i18n"
+                }
+            },
+            "mainModel": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            },
+            "ZVY_SB_TRAVEL": {
+                "dataSource": "ZVY_SB_TRAVEL",
+                "preload": true,
+                "settings": {
+                    "defaultCountMode": "Inline"
+                }
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [],
+            "targets": {}
+        }
+    },
+    "sap.ovp": {
+        "globalFilterModel": "mainModel",
+        "globalFilterEntityType": "BookingType",
+        "containerLayout": "resizable",
+        "enableLiveFilter": true,
+        "considerAnalyticalParameters": false,
+        "cards": {
+            "card000": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "Pricebydate",
+                    "entitySet": "Booking",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#PricebyDateDataPoint",
+                    "subTitle": "Monthly Descending",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PriceByDatePresentation",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#PricebyDate"
+                }
+            },
+            "card001": {
+                "model": "mainModel",
+                "template": "sap.ovp.cards.linklist",
+                "settings": {
+                    "title": "anubhav Trainings",
+                    "listFlavor": "carousel",
+                    "staticContent": [
+                        {
+                            "title": "UI5FIORITraining",
+                            "subTitle": "Develope customfiori apps",
+                            "imageUri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIa2RQL_v6Xw9_ttGUNYAiKhGXjX2-vpPqQYWZvopdLQ&s",
+                            "imageAltText": "ui5fiori",
+                            "openInNewWindow": true,
+                            "targetUri": "https://www.google.com"
+                        },
+                        {
+                            "title": "abaponhana Trainings",
+                            "subTitle": "Develope customfiori apps",
+                            "imageUri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi8zUoED_qnDFGo22mGxGx1VaCBHCJ3fNsK1eXs-54sQ&s",
+                            "imageAltText": "ui5fiori",
+                            "openInNewWindow": true,
+                            "targetUri": "https://www.google.com"
+                        },
+                        {
+                            "title": "fIORadvamceITraining",
+                            "subTitle": "Develope customfiori apps",
+                            "imageUri": "https://i.ytimg.com/vi/6E3I__2Gj9Q/hqdefault.jpg",
+                            "imageAltText": "ui5fiori",
+                            "openInNewWindow": true,
+                            "targetUri": "https://www.google.com"
+                        }
+                    ],
+                    "sortOrder": "descending"
+                }
+            },
+            "card004": {
+                "model": "ZVY_SB_TRAVEL",
+                "template": "sap.ovp.cards.charts.analytical",
+                "settings": {
+                    "title": "Pricebydate",
+                    "entitySet": "Travel",
+                    "subTitle": "Monthly Descending",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#PVCustomer",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#Donutcustomerprice"
+                }
+            },
+            "card003": {
+                "model": "ZVY_SB_TRAVEL",
+                "template": "sap.ovp.cards.table",
+                "settings": {
+                    "title": "Pricebyagency",
+                    "entitySet": "Travel",
+                    "tabs": [
+                        {
+                            "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#PricybyAgencyLineitem",
+                            "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#SelectionTab",
+                            "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#TotalPriceDatapoint",
+                            "value": "70034"
+                        },
+                        {
+                            "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#PricybyAgencyLineitem",
+                            "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#SelectionTab70036",
+                            "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#TotalPriceDatapoint",
+                            "value": "70036"
+                        }
+                    ]
+                }   
+            },
+            "card007": {
+                "model": "ZVY_SB_TRAVEL",
+                "template": "sap.ovp.cards.linklist",
+                "settings": {
+                    "title": "Quick Links",
+                    "entitySet": "Travel",
+                    "subTitle": "Most commonly used actions",
+                    "listFlavor": "standard",
+                    "targetUri": "https://en.wikipedia.org/wiki/Mangalyaan_2",
+                    "staticContent": [
+                        {
+                            "title": "UI5FIORITraining",
+                            "subTitle": "Develope customfiori apps",
+                            "imageUri": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIa2RQL_v6Xw9_ttGUNYAiKhGXjX2-vpPqQYWZvopdLQ&s",
+                            "imageAltText": "ui5fiori",
+                            "openInNewWindow": true,
+                            "targetUri": "https://www.google.com"
+                        }
+                    
+                ]
+            }
+        }
+        }
+        },
+        "sap.fiori": {
+            "registrationIds": [],
+            "archeType": "analytical"
+        }
+    }

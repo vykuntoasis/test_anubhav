@@ -1,0 +1,4 @@
+<core:View xmlns:m="sap.m"  controllerName = "tom.controller.Main" 
+xmlns:core="sap.ui.core.mvc">
+<m:Button id="myArun" text="Click this" press="myFunction" ></m:Button>
+</core:View>

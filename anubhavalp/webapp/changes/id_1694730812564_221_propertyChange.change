@@ -1,0 +1,41 @@
+{
+    "fileName": "id_1694730812564_221_propertyChange",
+    "fileType": "change",
+    "changeType": "propertyChange",
+    "moduleName": "",
+    "reference": "anubhav.alp.anubhavalp",
+    "packageName": "",
+    "content": {
+        "property": "fitContainer",
+        "newValue": true
+    },
+    "selector": {
+        "id": "anubhav.alp.anubhavalp::sap.suite.ui.generic.template.AnalyticalListPage.view.AnalyticalListPage::Booking--table",
+        "idIsLocal": false,
+        "type": "sap.ui.comp.smarttable.SmartTable"
+    },
+    "layer": "CUSTOMER_BASE",
+    "texts": {},
+    "namespace": "apps/anubhav.alp.anubhavalp/changes/",
+    "projectId": "",
+    "creation": 1694730812564,
+    "originalLanguage": "",
+    "support": {
+        "generator": "changeUtils: SAPFioriTools",
+        "service": "",
+        "user": "",
+        "sapui5Version": "1.118.0",
+        "sourceChangeFileName": "",
+        "compositeCommand": ""
+    },
+    "oDataInformation": {},
+    "dependentSelector": {},
+    "validAppVersions": {
+        "from": "0.0.1",
+        "to": "0.0.1",
+        "creation": "0.0.1"
+    },
+    "jsOnly": false,
+    "variantReference": "",
+    "appDescriptorChange": false
+}

@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <!-- boot strapping a process of loading libraries which browser cannot understand directly-->
+         <script src="https://ui5.sap.com/resources/sap-ui-core.js"
+           data-sap-ui-libs="sap.m"
+           data-sap-ui-theme="sap_bluecrystal"
+           data-sap-ui-resourceroots='{
+            "tom" : "./"
+           }'
+           >
+            
+         </script>
+         <script>
+            // var oBtn = new sap.m.Button("idanubhav",{
+            //        text : "Click Me",
+            //        press : function(){
+            //            alert("welcome")
+            //        }
+            // })
+            // oBtn.placeAt("spidy");
+            // var oInp = new sap.m.Input({
+                
+            // })
+            // oInp.placeAt("ironman")
+            // sap ui5 elements
+            var oView = new sap.ui.view("",{
+                // FACTORY FUNCTION not UI controller
+                viewName : 'tom.view.Main',
+                
+                type : "JS"     
+                       
+
+            })
+
+            // var oAnubhav = new sap.ui.view("",{
+                
+            //     // factory function sap.ui.view
+            //     viewName : 'tom.view.Bruno',
+            //     type : 'XML',
+            //     id : 'Bruno'
+                
+            // })
+            var oView = new sap.ui.view("",{
+                       viewName : 'tom.view.login',
+                       type : 'XML'
+                      
+            })
+            oView.placeAt("spidy")
+            // placeat method called from sap.ui.core.control
+            // oAnubhav.placeAt("ironman")
+           
+            
+         </script>
+    </head>
+    <body class="sapUiBody">
+        <div id="spidy">
+
+        </div>  
+        <div id="ironman"></div>
+        <!-- <input>   HTML elemnt -->
+        
+    </body>
+</html>

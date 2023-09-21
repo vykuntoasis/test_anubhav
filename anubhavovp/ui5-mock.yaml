@@ -1,0 +1,47 @@
+specVersion: "2.6"
+metadata:
+  name: anubhav.ovp.anubhavovp
+type: application
+server:
+  customMiddleware:
+    - name: fiori-tools-proxy
+      afterMiddleware: compression
+      configuration:
+        ignoreCertError: false
+        ui5:
+          path:
+            - /resources
+            - /test-resources
+          url: https://ui5.sap.com
+        backend:
+          - path: /sap
+            url: http://122.162.240.164:8021/
+            client: "800"
+          - path: /sap
+            url: http://122.162.240.164:8021/
+            client: "800"
+    - name: fiori-tools-appreload
+      afterMiddleware: compression
+      configuration:
+        port: 35729
+        path: webapp
+        delay: 300
+    - name: sap-fe-mockserver
+      beforeMiddleware: csp
+      configuration:
+        mountPath: /
+        services:
+          - urlPath: /sap/opu/odata/sap/ZVY_SB_BOOKINGANA
+            metadataPath: ./webapp/localService/metadata.xml
+            mockdataPath: ./webapp/localService/data
+            generateMockData: true
+        annotations: []
+        service:
+          - urlPath: /sap/opu/odata/sap/ZVY_SB_BOOKINGANA
+            generateMockData: true
+            metadataXmlPath: ./webapp/localService/mainService/metadata.xml
+            mockdataRootPath: ./webapp/localService/data
+          - urlPath: /sap/opu/odata/sap/ZVY_SB_TRAVEL
+            metadataXmlPath: ./webapp/localService/ZVY_SB_TRAVEL/metadata.xml
+            mockdataRootPath: ./webapp/localService/ZVY_SB_TRAVEL/mockdata
+            generateMockData: true

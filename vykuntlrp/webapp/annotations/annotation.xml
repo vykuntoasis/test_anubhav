@@ -1,0 +1,305 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common" />
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI" />
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication" />
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZVY_SB_TRAVEL/$metadata">
+        <edmx:Include Namespace="cds_zvy_fe_travel" />
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="cds_zvy_fe_travel.TravelType/CustomerID">
+                <Annotation Term="Common.Label" String="Customer ka id" />
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="Customer" />
+
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CustomerID" />
+
+                                    <PropertyValue Property="ValueListProperty" String="CustomerID" />
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CustomerID" />
+
+                                    <PropertyValue Property="ValueListProperty" String="FirstName" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.SemanticObject" String="anubhavapplrpvykuntlrp"/>
+            </Annotations>
+            <Annotations Target="cds_zvy_fe_travel.Booking">
+                <Annotation Term="Common.Text" Path="Description" />
+                
+            </Annotations>
+            <!-- <Annotations Target="cds_zvy_fe_travel.TravelType/AgencyID" >
+                <Annotation Term="Common.FilterDefaultValue">
+                    <String>70003</String>
+                </Annotation> -->
+            <!-- </Annotations> -->
+            <Annotations Target="cds_zvy_fe_travel.BookingType">
+                <Annotation Term="UI.LineItem" Qualifier="BookingTable">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="BookingID" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerID" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="FlightDate" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CarrierID" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="to_Customer/City" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zvy_fe_travel.TravelType">
+                <Annotation Term="UI.DataPoint" Qualifier="myBookingFee">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="BookingFee" />
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record Type="UI.CriticalityCalculationType">
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize" />
+                                
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Identification" Qualifier="headerInfo">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="AgencyID" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerID" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="AgencyName" />
+                        </Record>
+                        
+                        
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="TravelDates">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Label" String="Planned dates" />
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Travel start date" />
+                                    <PropertyValue Property="Value" Path="BeginDate" />
+                                     <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/ReadOnly"/>
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Label" String="Travel enddate" />
+                                    <PropertyValue Property="Value" Path="EndDate" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.FieldGroup" Qualifier="Costs" >
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Label" String="Costing of travel" />
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    
+                                    <PropertyValue Property="Value"  Path="BookingFee" />
+                                </Record>
+                                <Record Type="UI.DataField">
+                                    
+                                    <PropertyValue Property="Value" Path="TotalPrice" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.CollectionFacet">
+                            <PropertyValue Property="Label" String="Travel Overview" />
+                            <PropertyValue Property="Facets">
+                                <Collection>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Travel overview" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.Identification#headerInfo" />
+                                    </Record>
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="plannned dates" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#TravelDates" />
+                                    </Record>
+
+                                    <Record Type="UI.ReferenceFacet">
+                                        <PropertyValue Property="Label" String="Costs" />
+                                        <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#Costs" />
+                                    </Record>
+                                </Collection>
+                            </PropertyValue>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                        <PropertyValue Property="Label" String="bookinginforamtion"/>
+                            <PropertyValue Property="Target" AnnotationPath="to_Booking/@UI.LineItem#BookingTable"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.Chart" Qualifier="BookingChart">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="Title" String="Booking" />
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bullet" />
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>BookingFee</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#myBookingFee" />
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="myRating">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Title" String="Rating" />
+                        <PropertyValue Property="Value" Path="Rating" />
+                        <PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Rating" />
+                    </Record>
+                </Annotation>
+                <!-- <Annotation Term="UI.DataPoint" Qualifier="myFees" >
+                     <Record Type="UI.DataPointType">
+                         <PropertyValue Property="Value"  Path="BookingFee" />
+                         <PropertyValue Property="TargetValue" Path="TotalPrice"/>
+                         <PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress"/>
+                     </Record>
+                 </Annotation> -->
+
+                <Annotation Term="Common.SemanticKey">
+                    <Collection>
+                        <PropertyPath>TravelID</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="{@i18n>travel}" />
+                        <PropertyValue Property="TypeNamePlural" String="{@i18n>travels}" />
+                        <PropertyValue Property="Title">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="TravelID" />
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="Description" />
+                            </Record>
+                        </PropertyValue>
+                        <PropertyValue
+                            Property="ImageUrl"
+                            String="data:image/jpeg;base64,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"
+                        />
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Chart#BookingChart" />
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#myRating" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>AgencyID</PropertyPath>
+                        <PropertyPath>CustomerID</PropertyPath>
+                        <PropertyPath>OverallStatus</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="TravelID" />
+                            <PropertyValue Property="Label" String="{@i18n>travelNumber}" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerID" />
+                            <PropertyValue Property="Label" String="Customer" />
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="AgencyID" />
+                            <PropertyValue Property="Label" String="Agency" />
+                        </Record>
+                        <!-- <Record Type="UI.DataFieldWithUrl">
+                            <PropertyValue Property="Value" Path="AgencyID"/>
+                            <PropertyValue Property="Url" String="www.google.com"/>
+                        </Record> -->
+                       
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="BeginDate" />
+                            <PropertyValue Property="Label" String="Begin date" />
+                        </Record>
+
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Label" String="{@i18n>rating}" />
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#myRating" />
+                        </Record>
+
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Label" String="Anubhav" />
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Chart#BookingChart" />
+                        </Record>
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="OverallStatus" />
+                            <PropertyValue Property="Label" String="{@i18n>status}" />
+                            <PropertyValue Property="Criticality" Path="StatusCriticality"/>
+                        </Record>
+                        
+
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="TotalPrice" />
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+            
+                
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

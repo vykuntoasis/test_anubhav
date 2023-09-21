@@ -17,10 +17,10 @@ server:
           url: https://ui5.sap.com
         backend:
           - path: /sap
-            url: http://122.162.240.164:8021/
+            url: http://stsrvr.mynetgear.com:8021/
             client: '800'
           - path: /sap
-            url: http://122.162.240.164:8021/
+            url: http://stsrvr.mynetgear.com:8021/
             client: '800'
     - name: fiori-tools-appreload
       afterMiddleware: compression

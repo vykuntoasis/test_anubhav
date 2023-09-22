@@ -184,7 +184,7 @@
                         <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bar"/>
                         <PropertyValue Property="Dimensions">
                             <Collection>
-                                <PropertyPath>AgencyID</PropertyPath>
+                                <PropertyPath>CustomerID</PropertyPath>
                             </Collection>
                         </PropertyValue>
                         <PropertyValue Property="Measures">

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.CodeList.v1" Alias="SAP__CodeList"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='LOCAL')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZAPR_CDS_ASSO_CDS" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="SNWD_ADType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="NODE_KEY"/>
+                </Key>
+                <Property Name="NODE_KEY" Type="Edm.Guid" Nullable="false" sap:label="Node Key"/>
+                <Property Name="CITY" Type="Edm.String" MaxLength="40" sap:label="City"/>
+                <Property Name="POSTAL_CODE" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Postal Code"/>
+                <Property Name="STREET" Type="Edm.String" MaxLength="60" sap:label="Street"/>
+                <Property Name="BUILDING" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Building"/>
+                <Property Name="COUNTRY" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Country"/>
+                <Property Name="ADDRESS_TYPE" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Address Type"/>
+                <Property Name="VAL_START_DATE" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid From"/>
+                <Property Name="VAL_END_DATE" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid Until"/>
+                <Property Name="LATITUDE" Type="Edm.Decimal" Precision="15" Scale="12" sap:label="Latitude"/>
+                <Property Name="LONGITUDE" Type="Edm.Decimal" Precision="15" Scale="12" sap:label="Longitude"/>
+            </EntityType>
+            <EntityType Name="SNWD_SOType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="NODE_KEY"/>
+                </Key>
+                <Property Name="NODE_KEY" Type="Edm.Guid" Nullable="false" sap:label="Node Key"/>
+                <Property Name="SO_ID" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Order ID"/>
+                <Property Name="CREATED_BY" Type="Edm.Guid" sap:label="Node Key"/>
+                <Property Name="CREATED_AT" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created At"/>
+                <Property Name="CHANGED_BY" Type="Edm.Guid" sap:label="Node Key"/>
+                <Property Name="CHANGED_AT" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed At"/>
+                <Property Name="CREATED_BY_BP" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Value"/>
+                <Property Name="CHANGED_BY_BP" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Value"/>
+                <Property Name="NOTE_GUID" Type="Edm.Guid" sap:label="Node Key"/>
+                <Property Name="BUYER_GUID" Type="Edm.Guid" sap:label="Node Key"/>
+                <Property Name="CURRENCY_CODE" Type="Edm.String" MaxLength="5" sap:label="Currency Code" sap:semantics="currency-code"/>
+                <Property Name="GROSS_AMOUNT" Type="Edm.Decimal" Precision="16" Scale="3" sap:label="Gross Amount"/>
+                <Property Name="NET_AMOUNT" Type="Edm.Decimal" Precision="16" Scale="3" sap:label="Net Amount"/>
+                <Property Name="TAX_AMOUNT" Type="Edm.Decimal" Precision="16" Scale="3" sap:label="Tax Amount"/>
+                <Property Name="LIFECYCLE_STATUS" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Lifecycle Status"/>
+                <Property Name="BILLING_STATUS" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Confirmation Status"/>
+                <Property Name="DELIVERY_STATUS" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Ordering Status"/>
+                <Property Name="OP_ID" Type="Edm.String" MaxLength="35" sap:label="Opportunity ID"/>
+                <Property Name="_DATAAGING" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data Aging"/>
+                <Property Name="DUMMY" Type="Edm.String" MaxLength="1"/>
+                <Property Name="OVERALL_STATUS" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Overall Status"/>
+                <Property Name="BUY_CONTACT_GUID" Type="Edm.Guid" sap:label="Node Key"/>
+                <Property Name="SHIP_TO_ADR_GUID" Type="Edm.Guid" sap:label="Node Key"/>
+                <Property Name="BILL_TO_ADR_GUID" Type="Edm.Guid" sap:label="Node Key"/>
+                <Property Name="PAYMENT_METHOD" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Payment Method"/>
+                <Property Name="PAYMENT_TERMS" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Payment Terms"/>
+            </EntityType>
+            <EntityType Name="zapr_cds_assoType" sap:label="cds association" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="NodeKey"/>
+                </Key>
+                <Property Name="NodeKey" Type="Edm.Guid" Nullable="false" sap:label="Node Key" sap:quickinfo="EPM: Generic Node Key"/>
+                <Property Name="Bprole" Type="Edm.String" MaxLength="8"/>
+                <Property Name="EmailAddress" Type="Edm.String" MaxLength="255" sap:label="Email" sap:quickinfo="EPM: E-Mail Address"/>
+                <Property Name="AddressGuid" Type="Edm.Guid" sap:label="Node Key" sap:quickinfo="EPM: Generic Node Key"/>
+                <Property Name="BpId" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Business Partner ID" sap:quickinfo="EPM: Business Partner ID"/>
+                <Property Name="CompanyName" Type="Edm.String" MaxLength="80" sap:label="Company" sap:quickinfo="EPM: Company Name"/>
+                <NavigationProperty Name="to_Address" Relationship="ZAPR_CDS_ASSO_CDS.assoc_2EF630ADEF333065A3076FF84E612324" FromRole="FromRole_assoc_2EF630ADEF333065A3076FF84E612324" ToRole="ToRole_assoc_2EF630ADEF333065A3076FF84E612324"/>
+                <NavigationProperty Name="to_Orders" Relationship="ZAPR_CDS_ASSO_CDS.assoc_6E8541294C752F97AB20AEC1DC78D621" FromRole="FromRole_assoc_6E8541294C752F97AB20AEC1DC78D621" ToRole="ToRole_assoc_6E8541294C752F97AB20AEC1DC78D621"/>
+            </EntityType>
+            <Association Name="assoc_6E8541294C752F97AB20AEC1DC78D621" sap:content-version="1">
+                <End Type="ZAPR_CDS_ASSO_CDS.zapr_cds_assoType" Multiplicity="1" Role="FromRole_assoc_6E8541294C752F97AB20AEC1DC78D621"/>
+                <End Type="ZAPR_CDS_ASSO_CDS.SNWD_SOType" Multiplicity="*" Role="ToRole_assoc_6E8541294C752F97AB20AEC1DC78D621"/>
+            </Association>
+            <Association Name="assoc_2EF630ADEF333065A3076FF84E612324" sap:content-version="1">
+                <End Type="ZAPR_CDS_ASSO_CDS.zapr_cds_assoType" Multiplicity="1" Role="FromRole_assoc_2EF630ADEF333065A3076FF84E612324"/>
+                <End Type="ZAPR_CDS_ASSO_CDS.SNWD_ADType" Multiplicity="0..1" Role="ToRole_assoc_2EF630ADEF333065A3076FF84E612324"/>
+            </Association>
+            <EntityContainer Name="ZAPR_CDS_ASSO_CDS_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="SNWD_AD" EntityType="ZAPR_CDS_ASSO_CDS.SNWD_ADType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="SNWD_SO" EntityType="ZAPR_CDS_ASSO_CDS.SNWD_SOType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="zapr_cds_asso" EntityType="ZAPR_CDS_ASSO_CDS.zapr_cds_assoType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_2EF630ADEF333065A3076FF84E612324" Association="ZAPR_CDS_ASSO_CDS.assoc_2EF630ADEF333065A3076FF84E612324" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="zapr_cds_asso" Role="FromRole_assoc_2EF630ADEF333065A3076FF84E612324"/>
+                    <End EntitySet="SNWD_AD" Role="ToRole_assoc_2EF630ADEF333065A3076FF84E612324"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_6E8541294C752F97AB20AEC1DC78D621" Association="ZAPR_CDS_ASSO_CDS.assoc_6E8541294C752F97AB20AEC1DC78D621" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="zapr_cds_asso" Role="FromRole_assoc_6E8541294C752F97AB20AEC1DC78D621"/>
+                    <End EntitySet="SNWD_SO" Role="ToRole_assoc_6E8541294C752F97AB20AEC1DC78D621"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZAPR_CDS_ASSO_CDS.ZAPR_CDS_ASSO_CDS_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+            </Annotations>
+            <Annotations Target="ZAPR_CDS_ASSO_CDS.ZAPR_CDS_ASSO_CDS_Entities/zapr_cds_asso" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Address"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Orders"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://stsrvr.mynetgear.com:8030/sap/opu/odata/sap/ZAPR_CDS_ASSO_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://stsrvr.mynetgear.com:8030/sap/opu/odata/sap/ZAPR_CDS_ASSO_CDS/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

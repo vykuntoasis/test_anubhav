@@ -1,0 +1,104 @@
+<mvc:View xmlns:table="sap.ui.table"
+    controllerName="project1.controller.Add"
+    xmlns="sap.m"
+    xmlns:semantic="sap.m.semantic"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:f="sap.ui.layout.form">
+
+    <semantic:DetailPage
+        id="detailPage"
+        busy="{detailView>/busy}"
+        busyIndicatorDelay="{detailView>/delay}">
+        
+   <semantic:content>
+     <f:SimpleForm id="SimpleFormChange354"
+			editable="true"
+			layout="ResponsiveGridLayout"
+			title="Address"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="Customername" />
+				<Input id="name" value="{Add>/order/Customername}" />
+				<Label text="Ordrerno" />
+				<Input value="{Add>/order/OrderNo}">
+				</Input>
+				<DatePicker value="{Add>/order/OrderDate}"></DatePicker>
+			</f:content>
+		</f:SimpleForm>
+		<Table id="idProductsTable"
+		inset="false"
+		items="{
+			path: '{Add>/order/NavOrderToItems}',
+			
+		}">
+		<headerToolbar>
+	<Toolbar >
+	<content>
+	<Title text="Products" >
+	
+	</Title>
+	<ToolbarSpacer >
+	</ToolbarSpacer>
+	<Button text="addproduct" press="addPress"></Button>
+	</content>
+	</Toolbar>
+		</headerToolbar>
+		
+		<infoToolbar>
+			<OverflowToolbar>
+				<Label text="Wide range of available products"/>
+			</OverflowToolbar>
+		</infoToolbar>
+		<columns>
+			<Column
+				width="12em">
+				<Text text="Product" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Quantity" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Unit" />
+			</Column>
+			<Column
+				minScreenWidth="Tablet"
+				demandPopin="true">
+				<Text text="Itemno" />
+			</Column>
+			
+			
+		</columns>
+		<items>
+			<ColumnListItem vAlign="Middle">
+				<cells>
+				    <Text text="{Add>Itemno}"></Text>
+					<Input value="{Add>ProductId}"></Input>
+
+					<Input type="Number" value="{Add>Qty}"></Input>
+					<Text text="{Add>Uom}" ></Text>
+					
+				</cells>
+			</ColumnListItem>
+		</items>
+	</Table>
+   </semantic:content>
+
+    </semantic:DetailPage>
+
+</mvc:View>

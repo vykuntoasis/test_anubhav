@@ -1,0 +1,6 @@
+applications:
+- name : fiorioncloud
+  memeory: 1G  
+  buildpacks:
+  - nodejs_buildpack 
+    

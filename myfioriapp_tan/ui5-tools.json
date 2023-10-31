@@ -1,0 +1,19 @@
+{
+  "deployer": {
+    "type": "Gateway",
+    "options": {
+      "conn": {
+        "server": "http://stsrvr.mynetgear.com:8030",
+        "client": "800"
+      },
+      "ui5": {
+        "language": "EN",
+        "package": "ZABAPONHANA",
+        "bspcontainer": "ZZ1_TST",
+        "bspcontainer_text": "test",
+        "calc_appindex": true,
+        "transportno": "S4HK901519"
+      }
+    }
+  }
+}

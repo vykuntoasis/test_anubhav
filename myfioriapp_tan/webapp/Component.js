@@ -32,6 +32,7 @@ function (UIComponent, Device, models, ListSelector, ErrorHandler) {
 
             // call the base component's init function and create the App view
             UIComponent.prototype.init.apply(this, arguments);
+            // this.default = this.getComponentData().startupParameters["sales"][0]
 
             // create the views based on the url/hash
             this.getRouter().initialize();
@@ -47,7 +48,7 @@ function (UIComponent, Device, models, ListSelector, ErrorHandler) {
             this.oListSelector.destroy();
             this._oErrorHandler.destroy();
             // call the base component's destroy function
-            UIComponent.prototype.destroy.apply(this, arguments);
+             UIComponent.prototype.destroy.apply(this, arguments);
         },
 
         /**

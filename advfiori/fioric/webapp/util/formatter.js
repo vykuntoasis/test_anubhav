@@ -1,4 +1,4 @@
-sap.ui.define([],function(){
+sap.ui.define(['sap/ui/core/format/NumberFormat'],function(NumberFormat){
 	return{
 		getStatus: function(value){
 			switch (value) {
@@ -10,6 +10,14 @@ sap.ui.define([],function(){
 					return 'Error';
 				default:
 			}
+		},
+
+		currencyFormat:function(amount,curr){
+               var oCurrencyFormat = NumberFormat.getCurrencyInstance({
+				currencyCode : false
+			   })
+
+			   return oCurrencyFormat.format(amount,curr) ;
 		}
 	};
 });

@@ -1,0 +1,53 @@
+<html>
+	<head>
+
+		<script type="text/javascript">
+
+			window["sap-ushell-config"] = {
+				defaultRenderer: "fiori2",
+				applications: {
+					"Nishan-nainsukha":{
+						title: "Anubhav Trainings.com",
+						description: "This is magical!",
+						additionalInformation: "SAPUI5.Component=anubhav.abap",
+						applicationType: "URL",
+						url: "../"
+					}
+				}
+			};
+
+
+		</script>
+
+		<script src="https://sapui5.hana.ondemand.com/test-resources/sap/ushell/bootstrap/sandbox.js"></script>
+		<script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+				data-sap-ui-libs="sap.m"
+				data-sap-ui-theme="sap_fiori_3_dark"
+				data-sap-ui-resourceroots='{
+					"anubhav.app" : "../"
+				}'
+				data-sap-ui-bindingSyntax="complex"
+				data-sap-ui-language="en"
+				data-sap-ui-frameOptions="allow">
+		</script>
+		<script>
+
+			sap.ui.require(["anubhav/app/localService/mockserver"],
+				function(mockserver){
+				mockserver.init();
+				sap.ushell.Container.createRenderer().placeAt("content");
+				// var oComponentContainer = new sap.ui.core.ComponentContainer({
+				// 	name: "anubhav.app"
+				// });
+
+				// oComponentContainer.placeAt("content");
+			});
+
+			
+
+		</script>
+	</head>
+	<body class="sapUiBody">
+		<div id="content"></div>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: '2.4'
+metadata:
+  name: fiorioncloud
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://stcfin.st.com:8021/
+          client: "800"
+        credentials:
+          username: env:MY_USER
+          password: env:MY_PASSWORD
+        app:
+          name: ZZ1_VSFIORI
+          description: My Fiori app in S/4HANA
+          package: $TMP
+          transport: ""

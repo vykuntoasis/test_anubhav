@@ -1,0 +1,18 @@
+{
+  "deployer": {
+    "type": "Gateway",
+    "options": {
+      "conn": {
+        "server": "http://34.123.135.177:50000",
+        "client": "001"
+      },
+      "ui5": {
+        "language": "EN",
+        "package": "$TMP",
+        "bspcontainer": "ZATSFLIGHT",
+        "bspcontainer_text": "TEST",
+        "calc_appindex": true
+      }
+    }
+  }
+}

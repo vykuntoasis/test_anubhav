@@ -1,0 +1,80 @@
+var express = require('express')
+
+var app = express()
+
+app.use("/",express.static("webapp/"))
+
+app.get("/",(req,res) => {
+    res.send ("Welcome to my website")
+})
+
+app.get("/home",(req,res) => {
+    res.send ("<label> what your name</label><input><br><button>Click me</buttton>")
+})
+
+app.get("/vendors",(req,res) => {
+    res.json(this.vendors)
+})
+
+app.get("/index.html",(req,res)=>{
+    res.sendFile( __dirname + "/webapp/index.html")
+})
+
+
+this.vendors = [
+    {
+        "id" : 1,
+         "name": "Anubhav",
+         "city": "Gurgano",
+         "country": "IN",
+         "companyName": "Anubhav trainings",
+         "emailID": "anubhav@gmail.com",
+         "gstNo" : "dkjafiaeoj"
+    },
+    {
+        "id" : 2,
+         "name": "Ananya",
+         "city": "Delhi",
+         "country": "IN",
+         "companyName": "Anubhav trainings",
+         "emailID": "anubhav@example.com",
+         "gstNo" : "dkjadafsfiaeoj"
+    },
+    {
+        "id" : 3,
+         "name": "Anubhav",
+         "city": "Gurgano",
+         "country": "IN",
+         "companyName": "Anubhav trainings",
+         "emailID": "anubhav.trainings.com",
+         "gstNo" : "dkjaf124kljldjfkaliaeoj"
+    },
+    {
+        "id" : 4,
+         "name": "Veronica",
+         "city": "Italy",
+         "country": "IN",
+         "companyName": "Anubhav trainings",
+         "emailID": "anubhav.trainings.com",
+         "gstNo" : ""
+    }
+]
+
+app.get("/vendors",(req,res)=>{
+   
+})
+
+// console.log("Your server started http://www.google.com")
+console.log("Your server started http://localhost:3000")
+
+const portno = process.env.PORT || 3000
+
+app.listen(portno)
+
+-- Needs to be added in case update not happening with latest ui5 tooling modules of sap in ui5.yaml
+
+  // "ui5":{
+  //   "dependencies":[
+  //     "@sap/ux-ui5-tooling"
+  //   ]
+  // }

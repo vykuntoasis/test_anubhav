@@ -19,12 +19,32 @@ sap.ui.define([
 				  country: "India",
 				   county : null,
 				   stats : {
-					confirmed : 10,
+					confirmed : 10342,
 					deaths : 10076,
 					recovered : 81409
 				   },
 				   province:"A"
 				},
+				{
+					country: "India",
+					 county : null,
+					 stats : {
+					  confirmed : 103424143412,
+					  deaths : 10076,
+					  recovered : 81409
+					 },
+					 province:"A"
+				  },
+				  {
+					country: "India",
+					 county : null,
+					 stats : {
+					  confirmed : 103424143412,
+					  deaths : 10076,
+					  recovered : 81409
+					 },
+					 province:"A"
+				  },
 				{
 					country: "India",
 					 county : null,
@@ -58,8 +78,6 @@ sap.ui.define([
 				  },
 			]
 			)
-
-			
 					
             
             this.getView().setModel(oJSONModel)
@@ -68,116 +86,89 @@ sap.ui.define([
 
 		},
 
-		groupCountryData:function(adata){
-               var groupeddata = [];
-
-			   for (let i = 0; i < adata.length; i++) {
-				const element = adata[i];
-
-				if (groupeddata[element.country])
-				 {
-					groupeddata[element.country] = {
-					country : element.country,
-					confirmed : element.stats.confirmed + groupeddata[element.country].confirmed,
-					deaths : element.stats.deaths + groupeddata[element.country].deaths,
-                    recovered : element.stats.recovered + groupeddata[element.country].recovered,
-					statecount : 1 + groupeddata[element.country].statecount
-					}
+		groupCountryData: function(aData){
+			var groupedData = [];
+			debugger;
+			for (let i = 0; i < aData.length; i++) {
+				const element = aData[i];
+				if(groupedData[element.country]){
+					groupedData[element.country] = {
+						country: element.country,
+						confirmed : element.stats.confirmed + groupedData[element.country].confirmed,
+						deaths : element.stats.deaths + groupedData[element.country].deaths, 
+						recovered : element.stats.recovered + groupedData[element.country].recovered,
+						stateCount : 1 + groupedData[element.country].stateCount
+					};
 				}else{
-					groupeddata[element.country] = {
-						country : element.country,
+					groupedData[element.country] = {
+						country: element.country,
 						confirmed : element.stats.confirmed,
-						deaths:element.stats.deaths,
-						recovered:element.stats.recovered,
-						statecount : 1
-					}
+						deaths : element.stats.deaths,
+						recovered : element.stats.recovered,
+						stateCount : 1
+					};
 				}
-				
-			   }
-
-			   return groupeddata
-
+			}
+			console.log(groupedData);
+			return groupedData;
 		},
+
 		
-		getTop5Indiacases:function(adata){
-             var allIndia = []
-
-			 var total = 0
-                
-			 for (let index = 0; index < adata.length; index++) {
-				const element = adata[index];
-                
-				if (element.country === "India") {
-					allIndia.push(element);
-					total = total + element.stats.confirmed;
-              
-
-				}
-				
-				
-			 }
-
-			 allIndia.sort(function(a,b){
-                 
-				return parseFloat(b.stats.confirmed) - parseFloat(a.stats.confirmed)
-			 })
-
-			 allIndia.splice(5,allIndia.length -1);
-
-			 return{
-
-				                //    "number": (total / 100000).toFixed(2),
-								number: total,
-									unit: "K",
-									trend : "Down",
-									state: "Error",
-									target: {
-										"number": 0,
-										"unit": "M"
-									},
-									deviation: {
-										"number": 34.7,
-										"state": "Critical"
-									},
-									details: "Q1, 2018",
-									allTop5 : allIndia
-			 }
-
-
-
+		getTop5IndiaCases: function (aData) {
+			var allIndia = [];
+			var total = 0;
+			for (let i = 0; i < aData.length; i++) {
+			  const element = aData[i];
+			  if(element.country === "India"){
+				allIndia.push(element);
+				total = total + element.stats.confirmed;
+			  }
+			  
+			}
+			allIndia.sort(function(a,b){
+			  return parseFloat(b.stats.confirmed) - parseFloat(a.stats.confirmed);
+			});
+			allIndia.splice(5, allIndia.length - 1);
+			return {
+			  number: total ,
+			  unit: "K",
+			  trend: "Down",
+			  state: "Error",
+			  target: {
+				number: 0,
+				unit: "K",
+			  },
+			  deviation: {
+				number: 1,
+			  },
+			  details: "Q3, 2021",
+			  allTop5: allIndia
+			};
+	
 		},
+	
 
 		onSelect: function (oEvent) {
 
-			var coviddata = JSON.parse(this.getView().getModel().getJSON());
-
-			var groupeddata = this.groupCountryData(JSON.parse(JSON.stringify(coviddata)));
-
-		    var covidIndexData = []
-
-			var totalcases = 0
-
-		    Object.keys(groupeddata).map((key) => {
-
-				covidIndexData.push(groupeddata[key])
-
-                totalcases = totalcases + groupeddata[key].recovered 
-			})
-            
-			var recoverycases = {
-				"totalcases" : totalcases,
-				 "data" : covidIndexData
-			}
-
-			var Indiatop5 = this.getTop5Indiacases(JSON.parse(JSON.stringify(coviddata)))
-
-			
-
-			// console.log(coviddata)
-			var sKey = oEvent.getSource().getSelectedKey()
-
-            var configuration = {}
-			console.log(sKey)
+			var covidData = JSON.parse(this.getView().getModel().getJSON());
+		//Create a group by country arrary with key as Country
+		var groupedData = this.groupCountryData(JSON.parse(JSON.stringify(covidData)));
+		var covidIndexedData = [];
+		//convert country wise data to to Index based array
+    var totalcases = 0;
+		Object.keys(groupedData).map((key) => {
+			covidIndexedData.push(groupedData[key]);
+      totalcases = totalcases + groupedData[key].recovered;
+		});
+    var recoveryCases = {
+      "total": totalcases ,
+      "data": covidIndexedData
+    };
+    var indiaTop5 = this.getTop5IndiaCases(JSON.parse(JSON.stringify(covidData)));
+    
+        var sKey = oEvent.getSource().getSelectedKey();
+        console.log(sKey);
+        var configuration = {};
 
 			switch (sKey) {
 
@@ -273,7 +264,7 @@ sap.ui.define([
 						"sap.card":{   
 						"type": "Table",
 						"data": {
-							"json": covidIndexData
+							"json": covidIndexedData
 						},
 						"header": {
 							"title": "Sales Orders for Key Accounts",
@@ -370,128 +361,97 @@ sap.ui.define([
 					case "Top5India":
 					// analytical card
 					configuration = {
-
-						"sap.app":{
-							"id" : "anubhav.app"
+						"sap.app": {
+						  id: "anubhav.app",
 						},
 						"sap.card": {
-						"type": "Analytical",
-						"header": {
-							"type": "Numeric",
-							"data": {
-								"json": 
-								Indiatop5
+						  type: "Analytical",
+						  header: {
+							type: "Numeric",
+							data: {
+							  json: indiaTop5,
 							},
-							"title": "Project Cloud Transformation",
-							"subTitle": "Revenue",
-							"unitOfMeasurement": "EUR",
-							"mainIndicator": {
-								"number": "{number}",
-								"unit": "{unit}",
-								"trend": "{trend}",
-								"state": "{state}"
+							title: "India Top 5 States Cases",
+							subTitle: "Confirmed Cases",
+							unitOfMeasurement: "M",
+							mainIndicator: {
+							  number: "{number}",
+							  unit: "{unit}",
+							  trend: "{trend}",
+							  state: "{state}",
 							},
-							"details": "{details}",
-							"sideIndicators": [
-								{
-									"title": "Target",
-									"number": "{target/number}",
-									"unit": "{target/unit}"
+							details: "{details}",
+							sideIndicators: [
+							  {
+								title: "Target",
+								number: "{target/number}",
+								unit: "{target/unit}",
+							  },
+							  {
+								title: "Deviation",
+								number: "{deviation/number}",
+								unit: "%",
+							  },
+							],
+						  },
+						  content: {
+							chartType: "column",
+							legend: {
+							  visible: "{legend/visible}",
+							  position: "{legend/position}",
+							  alignment: "{legend/alignment}",
+							},
+							plotArea: {
+							  dataLabel: {
+								visible: true,
+							  },
+							  categoryAxisText: {
+								visible: false,
+							  },
+							  valueAxisText: {
+								visible: false,
+							  },
+							},
+							title: {
+							  text: "Line chart",
+							  visible: true,
+							  alignment: "Left",
+							},
+							measureAxis: "valueAxis",
+							dimensionAxis: "categoryAxis",
+							data: {
+							  json: {
+								dimensions: {
+								  weekLabel: "States",
 								},
-								{
-									"title": "Deviation",
-									"number": "{deviation/number}",
-									"unit": "%",
-									"state": "{deviation/state}"
-								}
-							]
+								measures: {
+								  revenueLabel: "Confirmed Cases"
+								},
+								legend: {
+								  visible: true,
+								  position: "Bottom",
+								  alignment: "TopLeft",
+								},
+								list: indiaTop5.allTop5,
+							  },
+							  path: "/list",
+							},
+							dimensions: [
+							  {
+								label: "{dimensions/weekLabel}",
+								value: "{province}",
+							  },
+							],
+							measures: [
+							  {
+								label: "{measures/revenueLabel}",
+								value: "{stats/confirmed}",
+							  },
+							],
+						  },
 						},
-						"content": {
-							"chartType": "Column",
-							"chartProperties": {
-								"title": {
-									"text": "Line chart",
-									"visible": true,
-									"alignment": "left"
-								},
-								"legend": {
-									"visible": "{legend/visible}"
-								},
-								"legendGroup": {
-									"layout": {
-										"position": "{legend/position}",
-										"alignment": "{legend/alignment}"
-									}
-								},
-								"plotArea": {
-									"dataLabel": {
-										"visible": true
-									}
-								},
-								"categoryAxis": {
-									"title": {
-										"visible": false
-									}
-								},
-								"valueAxis": {
-									"title": {
-										"visible": false
-									}
-								}
-							},
-							"data": {
-								"json": {
-									"dimensions": {
-										"weekLabel": "Weeks"
-									},
-									"measures": {
-										"revenueLabel": "Revenue",
-										"costLabel": "Costs"
-									},
-									"legend":{
-										visible: true,
-										position : "Bottom",
-										alignment : "TopLeft"
-                    
-									},
-									"list": Indiatop5.allTop5
-								},
-								"path": "/list"
-							},
-							"dimensions": [
-								{
-									"name": "{dimensions/weekLabel}",
-									"value": "{province}"
-								}
-							],
-							"measures": [
-								{
-									"name": "{measures/revenueLabel}",
-									"value": "{stats/confirmed}"
-								}
-							],
-							"feeds": [
-								{
-									"uid": "valueAxis",
-									"type": "Measure",
-									"values": [
-										"{measures/revenueLabel}",
-										"{measures/costLabel}"
-									]
-								},
-								{
-									"uid": "categoryAxis",
-									"type": "Dimension",
-									"values": [
-										"{dimensions/weekLabel}"
-									]
-								}
-							]
-						}
-					}
-				
-
-				}
+					  };
+		  
 
 				break;
 				

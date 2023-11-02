@@ -42,7 +42,14 @@
 			</List>
 		</content>
 		<footer>
-			<Toolbar></Toolbar>
+			<Toolbar>
+			<ToolbarSpacer >
+			</ToolbarSpacer>
+			 <Button icon="" press="onPDFdownload">
+
+			 </Button>
+			
+			</Toolbar>
 		</footer>
 		<headerContent>
 			<Button icon="sap-icon://action" press="onNext"></Button>

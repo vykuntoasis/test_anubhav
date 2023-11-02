@@ -1,7 +1,7 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"anubhav/app/util/formatter"
-], function(Controller, Formatter) {
+], function (Controller, Formatter) {
 	"use strict";
 
 	return Controller.extend("anubhav.app.controller.View1", {
@@ -11,17 +11,47 @@ sap.ui.define([
 		 * Can be used to modify the View before it is displayed, to bind event handlers and do other one-time initialization.
 		 * @memberOf anubhav.app.view.View1
 		 */
-		onInit: function() {
+		onInit: function () {
 			//get the router object from Component.js
 			this.oRouter = this.getOwnerComponent().getRouter();
 		},
-		onItemSelect: function(oEvent){
+		onItemSelect: function (oEvent) {
 			var oSelectedItem = oEvent.getParameter("listItem");
 			var sTitle = oSelectedItem.getTitle();
 			this.onNext(sTitle);
 		},
 		oRouter: null,
-		onSelectChange: function(oEvent){
+		onPDFdownload: function () {
+			// const PDFDocument = require('pdfkit');
+			// const blobStream = require('blob-stream');
+
+			// create a document the same way as above
+			const doc = new PDFDocument();
+
+			// pipe the document to a blob
+			const stream = doc.pipe(blobStream());
+
+			// add your content to the document here, as usual
+			
+
+			// get a blob when you are done
+			doc.end();
+			stream.on('finish', function () {
+				// get a blob you can do whatever you like with
+				const blob = stream.toBlob('application/pdf');
+
+				// or get a blob URL for display in the browser
+				const url = stream.toBlobURL('application/pdf');
+				// iframe.src = url;
+
+				const clickElement = document.createElement("a")
+				clickElement.href = url
+				clickElement.download = "MYpdf";
+				clickElement.click();
+			});
+
+		},
+		onSelectChange: function (oEvent) {
 			var oList = oEvent.getSource();
 			// var aItems = oList.getSelectedItems();
 			// for (var i=0; i<aItems.length; i++) {
@@ -41,10 +71,10 @@ sap.ui.define([
 			// oView2.bindElement(sPath);
 
 		},
-		onSearch: function(oEvent){
+		onSearch: function (oEvent) {
 			//Step 1: get the value entered by user on screen
 			var sSearchValue = oEvent.getParameter("query");
-			if(!sSearchValue){
+			if (!sSearchValue) {
 				sSearchValue = oEvent.getParameter("newValue");
 			}
 			//Step 2: prepare a filter object - 2 operands and 1 operator
@@ -61,9 +91,9 @@ sap.ui.define([
 			//step 4: Inject the filter into the binding of list
 			oList.getBinding("items").filter(oFilterFinal);
 		},
-		onNext: function(sIndex){
+		onNext: function (sIndex) {
 			// WHO IS RESPONSIBLE FOR NAVIGATION
-			this.oRouter.navTo("detail",{
+			this.oRouter.navTo("detail", {
 				navya: sIndex
 			});
 			//Step 1: Get The Container object for this view

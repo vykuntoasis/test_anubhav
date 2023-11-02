@@ -4,7 +4,17 @@
 		<pages>
 			<Page title="I am an Empty View">
 				<content>
-					<Text text="Please select a fruit on left"></Text>
+					<VBox id="vbox">
+					<Text text="Welocm to covid dashboard">
+					
+					</Text>
+					<Select id="idSelect" change="onSelect">
+					 <core:Item key="Indiacase" text="overview of india covid cases"></core:Item>
+					 <core:Item key="all country" text="total cases for all countries"></core:Item>
+					 <core:Item key="recover all country" text="recovers in all countries"></core:Item>
+					 <core:Item key="Top5India" text="Top5 india states"></core:Item>
+					</Select>
+					</VBox>
 				</content>
 			</Page>
 		</pages>

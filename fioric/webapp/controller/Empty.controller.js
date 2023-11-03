@@ -184,7 +184,7 @@ sap.ui.define([
 						 
 						"type": "Object",
 						"data": {
-							"json": groupeddata["India"]
+							"json": groupedData["India"]
 						},
 						"header": {
 							"icon": {

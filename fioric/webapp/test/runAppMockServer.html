@@ -58,13 +58,17 @@
 
 		</script> -->
 		<script>
-			sap.ui.require(["anubhav/app/localService/mockserver"],
-            function(mockserver){
-                    mockserver.init()   })
 			sap.ui.getCore().attachInit(function() {
 				// initialize the ushell sandbox component
 				sap.ushell.Container.createRenderer().placeAt("content");
 			});
+			sap.ui.require(["anubhav/app/localService/mockserver"],
+            function(mockserver){
+                    mockserver.init() 
+					
+				
+				})
+			
 		</script>
 		<!-- <script> anubhav code
 			sap.ui.require(["anubhav/app/localService/mockserver"],

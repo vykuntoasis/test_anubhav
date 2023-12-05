@@ -1,0 +1,11 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "anubhavcap",
+            "database": "${workspaceFolder:capm}/spiderman"
+        }
+    ],
+    "sqltools.useNodeRuntime": true
+}

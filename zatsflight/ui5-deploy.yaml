@@ -15,7 +15,7 @@ builder:
       configuration:
         target:
           url: http://34.123.135.177:50000
-          client: "001"
+          client: '001'
         credentials:
           username: env:MY_USER
           password: env:MY_PASSWORD                 

@@ -10,7 +10,7 @@ context trans {
         customer : String;
         location : String;        
         created_on : Date;
-        created_by : String; 
+        created_by : Association to employee; 
     }
     entity employee :managed {
         key id: commons.Guid;

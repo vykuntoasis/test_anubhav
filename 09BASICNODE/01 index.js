@@ -8,8 +8,8 @@ var addNumber = function(x,y){
   // classic function we cannot access global variables;
     return x + y + this.tax ;
   
-}
-var result = addNumber(x,y);
+}.bind(this)
+var result = addNumber(x,y);  // using global variable in classic function
 
 
 console.log(result);

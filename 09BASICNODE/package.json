@@ -1,0 +1,16 @@
+{
+  "name": "09basicnode",
+  "version": "1.0.0",
+  "description": "mybasic js tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "first",
+    "node",
+    "basis"
+  ],
+  "author": "anubhav",
+  "license": "ISC"
+}

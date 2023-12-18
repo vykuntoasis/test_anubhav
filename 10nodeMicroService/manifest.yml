@@ -1,0 +1,4 @@
+applications:
+- name: mynodeapp
+  random-route : true
+  memory: 256M 

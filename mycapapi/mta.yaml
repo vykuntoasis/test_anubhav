@@ -1,0 +1,51 @@
+_schema-version: '3.1'
+ID: mycapapi
+version: 1.0.0
+description: "My Cloud extension project"
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - npx cds build --production
+modules:
+  - name: mycapapi-srv
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
+    requires:
+      - name: mycapapi-destination
+      - name: mycapapi-xsuaa
+  - name: mycapapi-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: mycapapi-db
+
+resources:
+  - name: mycapapi-destination
+    type: org.cloudfoundry.existing-service
+    parameters:
+      service-name: mycappi-destination
+  - name: mycapapi-db
+    type: com.sap.xs.hdi-container
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+  - name: mycapapi-xsuaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      path:  ./xs-security.json
+      service: xsuaa
+      service-plan: application
+  
